@@ -24,12 +24,23 @@ contrário disso:
 O primeiro dígito do CPF é 7
 """
 
-# 108.168.729-02
+import re
+import sys
 
-digitar_cpf = input("Digite seu CPF: ")
+entrada = input("Digite um CPF: ") \
+.replace('.','')\
+.replace(' ','')\
+.replace('-','')
+digitar_cpf= re.sub(r'[^0-9]','',entrada)
 digitos = digitar_cpf[:9]
 contador_regressivo = 10
 resultado = 0
+
+entrada_sequencial = entrada == entrada[0] * len(entrada)
+
+if entrada_sequencial:
+    print('Dados Invalidos')
+    sys.exit()
 
 for digito in digitos:
     resultado += int(digito) * contador_regressivo
@@ -37,7 +48,19 @@ for digito in digitos:
 
 resultado1 = (resultado * 10) % 11
 
-if resultado1 > 9:
-    print('seu resultado é 0')
+digitos_2 = digitar_cpf[:10]
+contador_regressivo_2 = 11
+resultado_1 = 0
+
+for digito_2 in digitos_2:
+    resultado_1 += int(digito_2) * contador_regressivo_2
+    contador_regressivo_2 -= 1
+
+resultado_2 = (resultado_1 * 10) % 11
+
+cpf_gerado = f'{digitos}{resultado1}{resultado_2}'
+
+if digitar_cpf == cpf_gerado:
+    print(f'{digitar_cpf} valido')
 else:
-    print(f'seu resultado é {resultado1}')
+    print('CPF invalido')

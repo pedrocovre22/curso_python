@@ -1,0 +1,16 @@
+x = 1 
+
+def escopo():
+    global x # MEXENDO NAS VARIAVEIS FORA DA FUNCAO TRANSFORMANDO EM GLOBAL
+    x = 10 # SO PODEMOS TER ACESSO A ELE DENTRO DA FUNCAO
+
+    def outra_funcao():
+        y = 2
+        print(x ,y) # VALORES FORA DA FUNCAO NAO PODEM MANIPULAR INTERNAMENTE
+
+    outra_funcao()
+    print(x)
+
+print(x) # VALOR FORA DA DEF CONTINUA SENDO O VALOR GLOBAL
+escopo()
+print(x) # VALOR IRA CONTINUAR SENDO 1 POIS ESTA FORA DA FUNCAO

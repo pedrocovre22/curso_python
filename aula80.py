@@ -14,8 +14,8 @@ print(s1)
 
 s1 = {1,2,3}
 s2 = {2,3,4}
-s3 = s1 | s2
-s3 = s1 & s2
-s3 = s1 - s2
-s3 = s1 ^ s2
+s3 = s1 | s2 #unificacao 
+s3 = s1 & s2 #somente duplicados 
+s3 = s1 - s2 #diferenca
+s3 = s1 ^ s2 #unicos
 print(s3)
